@@ -3,6 +3,7 @@ import sys
 import os
 import urllib.request as ureq
 import pdb
+from tqdm import tqdm
 
 download=1 # 0 if images are already downloaded
 
@@ -23,7 +24,7 @@ with open('dataset.json', 'r') as fp:
 ## Make a directory images to store all images there ##########
 if download == 1:
     # os.mkdir('./images')
-    for k in data.keys():
+    for k in tqdm(data.keys()):
         ext=os.path.splitext(data[k]['imageURL'])[1]
         outputFile='images/%s%s'%(k,ext)
         # pdb.set_trace()
