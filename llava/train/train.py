@@ -1,7 +1,7 @@
 from llava.train.train_compress import train as train_compress
 
 import os
-os.environ["WANDB_DISABLED"] = "true"
+# os.environ["WANDB_DISABLED"] = "true"
 
 
 
