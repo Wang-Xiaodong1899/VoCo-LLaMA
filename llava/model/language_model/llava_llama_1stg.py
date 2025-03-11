@@ -289,6 +289,7 @@ class LlamaModel(LlamaPreTrainedModel):
                 32000,
                 inputs_embeds.dtype
             )
+            # NOTE: voco token not attend latter text tokens; text tokens only attention voco tokens and self tokens
             attention_mask_voco = torch.where(attention_mask_voco == 1, torch.tensor(0), mask_min)
             attention_mask = attention_mask + attention_mask_voco
             attention_mask = torch.where(attention_mask < 0, mask_min, torch.tensor(0)).to(inputs_embeds.dtype)
