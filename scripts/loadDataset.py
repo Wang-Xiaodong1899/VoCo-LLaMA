@@ -22,7 +22,7 @@ with open('dataset.json', 'r') as fp:
 ################################################################
 ## Make a directory images to store all images there ##########
 if download == 1:
-    os.mkdir('./images')
+    # os.mkdir('./images')
     for k in data.keys():
         ext=os.path.splitext(data[k]['imageURL'])[1]
         outputFile='images/%s%s'%(k,ext)
