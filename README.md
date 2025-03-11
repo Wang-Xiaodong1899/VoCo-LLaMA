@@ -63,6 +63,10 @@ VoCo-LLaMA training requires only visual instruction fine-tuning. Please downloa
 - TextVQA: [train_val_images](https://dl.fbaipublicfiles.com/textvqa/images/train_val_images.zip)
 - VisualGenome: [part1](https://cs.stanford.edu/people/rak248/VG_100K_2/images.zip), [part2](https://cs.stanford.edu/people/rak248/VG_100K_2/images2.zip)
 
+```
+wget https://huggingface.co/datasets/ej2/llava-ocr-vqa/resolve/main/ocr_vqa.tar
+```
+
 After downloading all of them, organize the data as follows in `./playground/data`,
 
 ```

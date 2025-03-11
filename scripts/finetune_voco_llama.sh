@@ -1,13 +1,13 @@
 #!/bin/bash
 
-deepspeed --include localhost:0,1,2,3,4,5,6,7 --master_port=25600 VoCo-LLaMA/llava/train/train.py \
+deepspeed --include localhost:0,1,2,3 --master_port=25600 llava/train/train.py \
     --deepspeed ./scripts/zero3.json \
-    --model_name_or_path lmsys/vicuna-7b-v1.5 \
+    --model_name_or_path /volsparse3/wxd/models/vicuna-7b-v1.5 \
     --version v1 \
-    --data_path /group/40034/xubingye/llava_instruct/llava_v1_5_mix665k_polish.json \
-    --image_folder / \
+    --data_path /volsparse3/wxd/models/llava_v1_5_mix665k.json \
+    --image_folder /data/ \
     --vision_tower openai/clip-vit-large-patch14-336 \
-    --pretrain_mm_mlp_adapter ./checkpoints/llava-v1.5-7b-pretrain/mm_projector.bin \
+    --pretrain_mm_mlp_adapter /volsparse3/wxd/models/llava-v1.5-mlp2x-336px-pretrain-vicuna-7b-v1.5/mm_projector.bin \
     --mm_projector_type mlp2x_gelu \
     --mm_vision_select_layer -2 \
     --mm_use_im_start_end False \
@@ -34,4 +34,4 @@ deepspeed --include localhost:0,1,2,3,4,5,6,7 --master_port=25600 VoCo-LLaMA/lla
     --gradient_checkpointing True \
     --dataloader_num_workers 4 \
     --lazy_preprocess True \
-    # --report_to wandb
+    --report_to wandb
