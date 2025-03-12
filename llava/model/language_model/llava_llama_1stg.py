@@ -283,7 +283,7 @@ class LlamaModel(LlamaPreTrainedModel):
             _2d_attention_mask = _2d_attention_mask_b.to(inputs_embeds.dtype)
             for idx, locs in enumerate(voco_loc_back):
                 for loc in locs:
-                    _2d_attention_mask[idx][seq_length - 1 - loc] = 32000
+                    _2d_attention_mask[idx][seq_length - 1 - loc] = 32000 # voco token id
             attention_mask_voco = make_voco_mask_llava(
                 _2d_attention_mask,
                 32000,

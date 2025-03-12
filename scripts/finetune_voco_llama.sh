@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export WANDB_PROJECT=VoCo_Llama
+export WANDB_NAME=vicuna-7b-v1.5-instruct-tuning
+
 deepspeed --include localhost:0,1,2,3 --master_port=25600 llava/train/train.py \
     --deepspeed ./scripts/zero3.json \
     --model_name_or_path /volsparse3/wxd/models/vicuna-7b-v1.5 \
